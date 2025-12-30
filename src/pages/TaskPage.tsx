@@ -1,6 +1,7 @@
 // Halaman utama untuk menampilkan daftar task dengan fitur tambah dan edit task
 import { useEffect, useState } from "react";
 import { getTasks, createTask } from "../api/task.service";
+import { getSubTasks } from "../api/subtask.service"; // ← TAMBAH import
 import type { Task } from "../types/task";
 import TaskCard from "../components/TaskCard";
 import TaskModal, { type TaskFormData } from "../components/TaskModal";
@@ -16,7 +17,19 @@ export default function TaskPage() {
   const fetchTasks = async () => {
     try {
       const data = await getTasks();
-      setTasks(data);
+      
+      // Fetch subtasks untuk setiap task
+      const tasksWithSubtasks = await Promise.all(
+        data.map(async (task) => {
+          if (task.use_progress) {
+            const subtasks = await getSubTasks(task.id);
+            return { ...task, subtasks };
+          }
+          return task;
+        })
+      );
+      
+      setTasks(tasksWithSubtasks);
     } catch (err) {
       console.error(err);
     } finally {

@@ -2,7 +2,7 @@ import api from "./axios";
 import type { Task } from "../types/task";
 
 export const getTasks = async (): Promise<Task[]> => {
-  const res = await api.get("/tasks");
+  const res = await api.get("/tasks?include=subtasks"); // ← TAMBAH include parameter
   return res.data;
 };
 

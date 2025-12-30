@@ -1,5 +1,10 @@
 import api from "./axios";
 
+export const getSubTasks = async (taskId: string) => {
+  const res = await api.get(`/tasks/${taskId}/subtasks`);
+  return res.data;
+};
+
 export const createSubTask = async (
   taskId: string,
   payload: {
