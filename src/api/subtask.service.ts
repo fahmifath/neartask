@@ -1,0 +1,20 @@
+import api from "./axios";
+
+export const addSubTask = async (
+  taskId: string,
+  payload: {
+    title: string;
+    weight: number;
+  }
+) => {
+  return api.post(`/tasks/${taskId}/subtasks`, payload);
+};
+
+export const updateSubTask = async (
+  id: string,
+  payload: {
+    is_done: boolean;
+  }
+) => {
+  return api.put(`/subtasks/${id}`, payload);
+};
