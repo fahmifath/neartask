@@ -1,6 +1,6 @@
 import api from "./axios";
 
-export const addSubTask = async (
+export const createSubTask = async (
   taskId: string,
   payload: {
     title: string;
