@@ -45,7 +45,7 @@ export default function TaskModal({
                 title: task.title,
                 description: task.description ?? "",
                 deadline: task.deadline ?? "",
-                hasProgress: task.hasProgress ?? false,
+                hasProgress: task.use_progress ?? false,
                 subtasks:
                     task.subtasks?.map((st) => ({
                         title: st.title,

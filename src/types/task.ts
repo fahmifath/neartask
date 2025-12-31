@@ -1,4 +1,4 @@
-import { type SubTask } from "./subtask";
+import type { SubTask } from "./subtask";
 
 export interface Task {
   id: string;
