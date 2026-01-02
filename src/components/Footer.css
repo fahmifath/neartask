@@ -1,0 +1,27 @@
+/* Footer Styles */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #f0f2f5;
+    border-top: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 14px;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .footer {
+        padding: 16px;
+        font-size: 13px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .footer {
+        padding: 18px;
+        font-size: 13px;
+    }
+}

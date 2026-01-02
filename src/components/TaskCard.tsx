@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Task } from "../types/task";
 import { updateSubTask } from "../api/subtask.service";
+import "./TaskCard.css";
 
 interface TaskCardProps {
   task: Task;
@@ -41,88 +42,56 @@ export default function TaskCard({ task, onUpdate, onEdit }: TaskCardProps) {
   const progress = calculateProgress();
 
   return (
-    <div style={{
-      border: "1px solid #ddd",
-      padding: "15px",
-      borderRadius: "8px",
-      backgroundColor: "white",
-      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-    }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
-        <div style={{ flex: 1 }}>
-          <h3 style={{ margin: "0 0 8px 0" }}>{task.title}</h3>
-          <p style={{ margin: "0 0 10px 0", color: "#666" }}>{task.description}</p>
+    <div className="task-card">
+      <div className="task-card-header">
+        <div className="task-card-content">
+          <h3 className="task-card-title">{task.title}</h3>
+          <p className="task-card-description">{task.description}</p>
           
           {/* Deadline */}
           {task.deadline && (
-            <p style={{ margin: "0 0 10px 0", fontSize: "14px", color: "#999" }}>
+            <p className="task-card-deadline">
               📅 Deadline: {new Date(task.deadline).toLocaleDateString("id-ID")}
             </p>
           )}
 
           {/* Progress Bar & Subtask */}
           {task.use_progress && task.subtasks && task.subtasks.length > 0 && (
-            <div>
+            <div className="task-card-progress-section">
               {/* Progress Bar */}
-              <div style={{ marginBottom: "10px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
+              <div>
+                <div className="task-card-progress-header">
                   <strong>Progress</strong>
                   <span>{progress}%</span>
                 </div>
-                <div style={{
-                  width: "100%",
-                  height: "8px",
-                  backgroundColor: "#e0e0e0",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                }}>
-                  <div style={{
-                    width: `${progress}%`,
-                    height: "100%",
-                    backgroundColor: "#4CAF50",
-                    transition: "width 0.3s ease",
-                  }} />
+                <div className="task-card-progress-bar">
+                  <div
+                    className="task-card-progress-fill"
+                    style={{ width: `${progress}%` }}
+                  />
                 </div>
               </div>
 
               {/* Subtask List */}
               <div>
-                <strong style={{ display: "block", marginBottom: "8px" }}>Subtask:</strong>
-                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <strong className="task-card-subtasks-label">Subtask:</strong>
+                <div className="task-card-subtasks">
                   {task.subtasks.map((subtask) => (
-                    <label
-                      key={subtask.id}
-                      style={{
-                        display: "flex",
-                        gap: "10px",
-                        alignItems: "center",
-                        padding: "8px",
-                        backgroundColor: "#f9f9f9",
-                        borderRadius: "4px",
-                        cursor: "pointer",
-                      }}
-                    >
+                    <label key={subtask.id} className="task-card-subtask-item">
                       <input
                         type="checkbox"
                         checked={subtask.is_done}
                         onChange={() => handleSubtaskToggle(subtask.id, subtask.is_done)}
                         disabled={loading}
-                        style={{ cursor: "pointer" }}
                       />
-                      <span style={{
-                        flex: 1,
-                        textDecoration: subtask.is_done ? "line-through" : "none",
-                        color: subtask.is_done ? "#999" : "#000",
-                      }}>
+                      <span
+                        className={`task-card-subtask-text ${
+                          subtask.is_done ? "completed" : ""
+                        }`}
+                      >
                         {subtask.title}
                       </span>
-                      <span style={{
-                        fontSize: "12px",
-                        backgroundColor: "#e3f2fd",
-                        padding: "2px 8px",
-                        borderRadius: "4px",
-                        color: "#1976d2",
-                      }}>
+                      <span className="task-card-subtask-weight">
                         Weight: {subtask.weight}
                       </span>
                     </label>
@@ -133,20 +102,7 @@ export default function TaskCard({ task, onUpdate, onEdit }: TaskCardProps) {
           )}
         </div>
 
-        <button
-          onClick={onEdit}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#2196F3",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            whiteSpace: "nowrap",
-            marginLeft: "10px",
-          }}
-        >
+        <button onClick={onEdit} className="task-card-edit-btn">
           Edit
         </button>
       </div>

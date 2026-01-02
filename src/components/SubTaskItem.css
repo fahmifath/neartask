@@ -1,0 +1,37 @@
+/* SubTask Item */
+.subtask-item {
+    display: block;
+    padding: 8px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.subtask-item input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.subtask-item-text {
+    vertical-align: middle;
+    font-size: 15px;
+    color: #333;
+}
+
+.subtask-item-text.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .subtask-item {
+        padding: 10px 0;
+    }
+
+    .subtask-item-text {
+        font-size: 14px;
+    }
+}

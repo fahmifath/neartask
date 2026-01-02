@@ -1,5 +1,6 @@
 import type { SubTask } from "../types/subtask";
 import { updateSubTask } from "../api/subtask.service";
+import "./SubTaskItem.css";
 
 interface Props {
   subtask: SubTask;
@@ -16,13 +17,15 @@ export default function SubTaskItem({ subtask, onUpdate }: Props) {
   };
 
   return (
-    <label style={{ display: "block" }}>
+    <label className="subtask-item">
       <input
         type="checkbox"
         checked={subtask.is_done}
         onChange={toggle}
       />
-      {subtask.title} ({subtask.weight}%)
+      <span className={`subtask-item-text ${subtask.is_done ? "completed" : ""}`}>
+        {subtask.title} ({subtask.weight}%)
+      </span>
     </label>
   );
 }

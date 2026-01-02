@@ -1,0 +1,45 @@
+/* Navbar Styles */
+.navbar {
+    padding: 16px 20px;
+    background: #2c3e50;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #34495e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 14px 16px;
+    }
+
+    .navbar-title {
+        font-size: 20px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .navbar {
+        padding: 15px 18px;
+    }
+
+    .navbar-title {
+        font-size: 22px;
+    }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Task } from "../types/task";
 import Modal from "./Modal";
+import "./TaskModal.css";
 
 interface TaskModalProps {
     open: boolean;
@@ -111,12 +112,10 @@ export default function TaskModal({
             onClose={onClose}
             title={task ? "Edit Task" : "Tambah Task Baru"}
         >
-            <form
-                onSubmit={handleSubmit}
-                style={{ display: "flex", flexDirection: "column", gap: 16 }}
-            >
+            <form onSubmit={handleSubmit} className="task-modal-form">
                 {/* Title */}
                 <input
+                    type="text"
                     name="title"
                     placeholder="Judul Task"
                     value={formData.title}
@@ -142,7 +141,7 @@ export default function TaskModal({
                 />
 
                 {/* Progress */}
-                <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <label className="task-modal-checkbox-label">
                     <input
                         type="checkbox"
                         checked={formData.hasProgress}
@@ -153,16 +152,9 @@ export default function TaskModal({
 
                 {/* Subtask Section */}
                 {formData.hasProgress && (
-                    <div style={{ border: "1px solid #ddd", padding: 12 }}>
+                    <div className="task-modal-subtask-list">
                         {formData.subtasks.map((st, i) => (
-                            <div
-                                key={i}
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    marginBottom: 6,
-                                }}
-                            >
+                            <div key={i} className="task-modal-subtask-item">
                                 <span>
                                     {st.title} ({st.weight})
                                 </span>
@@ -175,8 +167,9 @@ export default function TaskModal({
                             </div>
                         ))}
 
-                        <div style={{ display: "flex", gap: 6 }}>
+                        <div className="task-modal-subtask-input">
                             <input
+                                type="text"
                                 placeholder="Nama subtask"
                                 value={newSubtask.title}
                                 onChange={(e) =>
@@ -204,7 +197,7 @@ export default function TaskModal({
                 )}
 
                 {/* Actions */}
-                <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
+                <div className="task-modal-actions">
                     <button type="button" onClick={onClose}>
                         Batal
                     </button>

@@ -1,0 +1,216 @@
+/* Form Container */
+.task-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Input Elements */
+.task-modal-form input[type="text"],
+.task-modal-form input[type="date"],
+.task-modal-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.task-modal-form input[type="text"]:focus,
+.task-modal-form input[type="date"]:focus,
+.task-modal-form textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+/* Checkbox Label */
+.task-modal-checkbox-label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.task-modal-checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+/* Subtask Section */
+.task-modal-subtask-list {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 12px;
+    background-color: #fafafa;
+}
+
+.task-modal-subtask-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.task-modal-subtask-item:last-child {
+    margin-bottom: 12px;
+}
+
+.task-modal-subtask-item span {
+    flex: 1;
+    word-break: break-word;
+    font-size: 14px;
+}
+
+.task-modal-subtask-item button {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Subtask Input Row */
+.task-modal-subtask-input {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.task-modal-subtask-input input[type="text"],
+.task-modal-subtask-input input[type="number"] {
+    padding: 8px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 100px;
+    box-sizing: border-box;
+}
+
+.task-modal-subtask-input input[type="text"] {
+    flex: 1;
+    min-width: 120px;
+}
+
+.task-modal-subtask-input input[type="number"] {
+    width: 80px;
+}
+
+.task-modal-subtask-input button {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Form Actions */
+.task-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+/* Button Styles */
+.task-modal-form button {
+    padding: 10px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 80px;
+}
+
+.task-modal-form button:hover {
+    background-color: #f5f5f5;
+    border-color: #d0d0d0;
+}
+
+.task-modal-form button[type="submit"] {
+    background-color: #4a90e2;
+    color: #fff;
+    border-color: #4a90e2;
+}
+
+.task-modal-form button[type="submit"]:hover {
+    background-color: #357abd;
+    border-color: #357abd;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .task-modal-form {
+        gap: 12px;
+    }
+
+    .task-modal-form input[type="text"],
+    .task-modal-form input[type="date"],
+    .task-modal-form textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .task-modal-subtask-list {
+        padding: 10px;
+    }
+
+    .task-modal-subtask-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .task-modal-subtask-item button {
+        width: 100%;
+    }
+
+    .task-modal-subtask-input {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .task-modal-subtask-input input[type="text"],
+    .task-modal-subtask-input input[type="number"],
+    .task-modal-subtask-input button {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .task-modal-actions {
+        gap: 6px;
+    }
+
+    .task-modal-actions button {
+        flex: 1;
+        min-width: unset;
+    }
+
+    .task-modal-form button {
+        padding: 12px 10px;
+    }
+
+    .task-modal-checkbox-label {
+        font-size: 15px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .task-modal-form {
+        gap: 14px;
+    }
+
+    .task-modal-subtask-input input[type="number"] {
+        width: 100px;
+    }
+}
