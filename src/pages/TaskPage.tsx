@@ -6,6 +6,7 @@ import { getSubTasks } from "../api/subtask.service";
 import { createSubTask } from "../api/subtask.service";
 import TaskCard from "../components/TaskCard";
 import TaskModal, { type TaskFormData } from "../components/TaskModal";
+import "./TaskPage.css";
 
 export default function TaskPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -85,25 +86,16 @@ export default function TaskPage() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Main><div className="task-page-loading">Loading...</div></Main>;
 
   return (
     <Main>
-      <div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-          <h1>NearTask</h1>
+      <div className="task-page-container">
+        <div className="task-page-header">
+          <h1 className="task-page-title">NearTask</h1>
           <button
             onClick={() => handleOpenModal()}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontWeight: "bold",
-              fontSize: "16px",
-            }}
+            className="task-page-add-btn"
           >
             + Tambah Task
           </button>
@@ -116,15 +108,19 @@ export default function TaskPage() {
           onSubmit={handleSubmit}
         />
 
-        <div style={{ display: "grid", gap: "15px" }}>
-          {tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task}
-              onUpdate={fetchTasks}
-              onEdit={() => handleOpenModal(task)}
-            />
-          ))}
+        <div className="task-page-grid">
+          {tasks.length > 0 ? (
+            tasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                onUpdate={fetchTasks}
+                onEdit={() => handleOpenModal(task)}
+              />
+            ))
+          ) : (
+            <div className="task-page-empty">Tidak ada task. Buat task baru untuk memulai.</div>
+          )}
         </div>
       </div>
     </Main>

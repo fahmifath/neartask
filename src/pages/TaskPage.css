@@ -1,0 +1,125 @@
+/* Task Page Container */
+.task-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header Section */
+.task-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.task-page-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+    min-width: 200px;
+}
+
+.task-page-add-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.task-page-add-btn:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.task-page-add-btn:active {
+    transform: scale(0.98);
+}
+
+/* Tasks Grid */
+.task-page-grid {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Loading & Empty States */
+.task-page-loading,
+.task-page-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .task-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .task-page-title {
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .task-page-add-btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+
+    .task-page-grid {
+        gap: 12px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .task-page-header {
+        gap: 12px;
+    }
+
+    .task-page-title {
+        font-size: 28px;
+    }
+
+    .task-page-add-btn {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    .task-page-grid {
+        gap: 12px;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1025px) {
+    .task-page-header {
+        gap: 20px;
+    }
+
+    .task-page-title {
+        font-size: 32px;
+    }
+
+    .task-page-grid {
+        gap: 15px;
+    }
+}
